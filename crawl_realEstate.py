@@ -48,7 +48,8 @@ def getDataFromLink(links):
         infor = requests.get('https://nhadat24h.net' + link)
             
         soup = BeautifulSoup(infor.content, "html.parser")
-        
+        global title, address, area, unitPrice, price_prev, price, detail_infor, number_bedroom, number_wc, number_floor, direction, entrance, facade, number_parking, id_estate
+
         # lay thong tin co ban cua bai dang
         # check ngoai le la nonetype
         try:
@@ -94,9 +95,10 @@ def getDataFromLink(links):
             id_estate = detail_infor[7].select('td')[1].text.replace("\n", "")
 
         except:
-             # Token not found. Replace 'pass' with additional logic.
+            # loi nonetype
             pass
         
+        allData.append([title, address, area, price, number_bedroom, number_wc, number_floor, direction, entrance, facade, number_parking, id_estate])
 
         # viet vao file csv
         # data = [title, address, area, price, number_bedroom, number_wc, number_floor, direction, entrance, facade, number_parking, id_estate]
@@ -108,8 +110,6 @@ def getDataFromLink(links):
 
         # write the data
         # writer.writerow(data)
-
-        allData.append([title, address, area, price, number_bedroom, number_wc, number_floor, direction, entrance, facade, number_parking, id_estate])
 
     # return array
 
