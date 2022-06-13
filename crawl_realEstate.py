@@ -48,6 +48,7 @@ def getDataFromLink(links):
         infor = requests.get('https://nhadat24h.net' + link)
             
         soup = BeautifulSoup(infor.content, "html.parser")
+        
         global title, address, area, unitPrice, price_prev, price, detail_infor, number_bedroom, number_wc, number_floor, direction, entrance, facade, number_parking, id_estate
 
         # lay thong tin co ban cua bai dang
@@ -115,7 +116,7 @@ def getDataFromLink(links):
 
 # lay du lieu tu cac trang
 def getData():
-    for index in range(1, 135):
+    for index in range(1, 2):
         # tao duong link theo tung trang
         if index == 1:
             url = 'https://nhadat24h.net/ban-can-ho-chung-cu'
